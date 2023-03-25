@@ -184,7 +184,7 @@ public class Main {
 			System.out.println("Good Evening ICA Monkeys!");
 		if (hour >= 21 || hour <= 3)
 			System.out.println("Good Night ICA Monkeys!");
-		System.out.println("Welcome to Kurumi MonkeyCard!\n");
+		System.out.println("Welcome to ICA MonkeyCard!\n");
 	}
 
 	public static String lookAhead(final String[] tokens, final int tokenIndex, final String errorMessage) {
@@ -386,7 +386,7 @@ public class Main {
 
 	// Monkey-LZW decompress
 	private static StringBuilder decompress(final List<boolean[][]> compressed) {
-		final Map<boolean[][], StringBuilder> dictionary = new TreeMap<>(Kurumi::compareMonkeySpace);
+		final Map<boolean[][], StringBuilder> dictionary = new TreeMap<>(Main::compareMonkeySpace);
 		final boolean[][] counter = new boolean[compressed.get(0).length][compressed.get(0)[0].length];
 		for (int character = 0; character < charsetLength; character++) {
 			dictionary.put(copyMonkeySpace(counter), new StringBuilder().append((char) character));
