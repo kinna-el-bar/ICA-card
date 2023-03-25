@@ -1,5 +1,8 @@
-import javax.imageio.ImageIO;
-import java.awt.*;
+import static java.lang.Math.ceil;
+import static java.lang.Math.round;
+import static java.lang.Math.sqrt;
+
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileWriter;
@@ -8,10 +11,16 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.*;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.TreeMap;
 
-import static java.lang.Math.*;
+import javax.imageio.ImageIO;
 
 public class Main {
 	private final static int charsetLength = 256;
@@ -80,6 +89,7 @@ public class Main {
 		do
 			System.out.print("Simian > ");
 		while (evaluate(scanner.nextLine().trim().split("\\s+")));
+		scanner.close();
 		bye();
 	}
 
@@ -333,7 +343,6 @@ public class Main {
 		fileData.append("[EOF]");
 	}
 
-	// Monkey-LZW compress
 	private static List<boolean[][]> compress(final StringBuilder text, final int... capacity) {
 		final List<boolean[][]> monkeySymbolList = new ArrayList<>();
 		if (capacity.length == 0)
@@ -384,7 +393,6 @@ public class Main {
 						/ Math.log(2)))));
 	}
 
-	// Monkey-LZW decompress
 	private static StringBuilder decompress(final List<boolean[][]> compressed) {
 		final Map<boolean[][], StringBuilder> dictionary = new TreeMap<>(Main::compareMonkeySpace);
 		final boolean[][] counter = new boolean[compressed.get(0).length][compressed.get(0)[0].length];
