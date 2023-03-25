@@ -13,7 +13,7 @@ import java.util.*;
 
 import static java.lang.Math.*;
 
-public class Kurumi {
+public class Main {
 	private final static int charsetLength = 256;
 	private static final StringBuilder fileData = new StringBuilder();
 	private static String outDir = "card/";
